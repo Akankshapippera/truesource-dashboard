@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrueSource Before vs After</title>
+<meta name="description" content="TrueSource dashboard comparing the current hot sauce order data (Dataset 1) with the data after TrueSource (Dataset 2).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23b3202a'/%3E%3Cpath d='M7 16V8h8l10 10-8 8z' fill='none' stroke='white' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brandmark"><i></i><span>TrueSource</span></div>
+      <h1>Before vs after: what changes once every order has a source</h1>
+      <p class="sub">Two versions of the same 2,500-order business. <b>Before</b> is the current data (Dataset 1). <b>After</b> is the data as TrueSource would record it (Dataset 2), built with the three rules listed at the bottom.</p>
+    </div>
+    <div class="badges"><span class="badge"><b>Before</b> Dataset 1 · current state</span><span class="badge"><b>After</b> Dataset 2 · with TrueSource</span></div>
+  </header>
+
+  <div class="headline" id="headline"></div>
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Orders by channel</h2>
+      <p class="cap">Unattributed orders are re-labelled; the paid channels get credit they earned.</p>
+      <div class="key"><span><i class="sw b"></i>Before (light)</span><span><i class="sw a"></i>After (solid)</span></div>
+      <div class="chartbox"><canvas id="c1" role="img" aria-label="Orders by channel, before and after TrueSource. Table below has the same numbers."></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Unattributed orders by month</h2>
+      <p class="cap">Share of each month's orders with no known source.</p>
+      <div class="key"><span><i class="ln"></i>Before</span><span><i class="ln a"></i>After</span></div>
+      <div class="chartbox"><canvas id="c2" role="img" aria-label="Monthly share of unattributed orders, before and after TrueSource."></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Profit per order by channel</h2>
+      <p class="cap">After costs and discounts. Dollars per order.</p>
+      <div class="key"><span><i class="sw b"></i>Before (light)</span><span><i class="sw a"></i>After (solid)</span></div>
+      <div class="chartbox"><canvas id="c3" role="img" aria-label="Profit per order by channel, before and after."></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Return on marketing spend</h2>
+      <p class="cap">Profit divided by marketing cost, for the channels that have spend. Word of Mouth and Unattributed have no recorded spend.</p>
+      <div class="key"><span><i class="sw b"></i>Before (light)</span><span><i class="sw a"></i>After (solid)</span></div>
+      <div class="chartbox"><canvas id="c4" role="img" aria-label="Return on marketing spend by channel, before and after."></canvas></div>
+    </div>
+  </div>
+
+  <section class="card block">
+    <h2>Channel scorecard</h2>
+    <p class="cap">The numbers behind the charts. Green is better, red is worse.</p>
+    <div class="tablewrap"><table id="score"></table></div>
+  </section>
+
+  <section class="card block">
+    <h2>How Dataset 2 was built</h2>
+    <p class="cap">Dataset 2 is not collected data. It is Dataset 1 with three documented rules applied, with a fixed random seed (2025) so it can be rebuilt exactly.</p>
+    <div class="rules" id="rules"></div>
+    <div class="note" id="roinote"></div>
+  </section>
+
+  <footer>Prototype for the MRP Scenario 5 project, Spend and Pray hot sauce brand. Synthetic data. Team: Akanksha Pippera, Thanmayi Varma, Navya Sri Vadlakonda, Lahari Punjala. Sponsor: Dr. Tatiana Cardona, Saint Louis University.</footer>
+</div>
+<script src="chart.umd.js"></script>
+<script src="dashboard-data.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
